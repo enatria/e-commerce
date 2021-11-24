@@ -1,9 +1,13 @@
-import React from "react";
-import { createMuiTheme, ThemeProvider } from "@mui/material";
-import { Typography } from "@mui/material";
+import React , {Suspense} from "react";
+import { ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import {Routes}  from './routes';
+
+const Layout = React.lazy(()=> import('./Layout'))
 // Custom Themes Material UI
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#345B63",
@@ -14,6 +18,9 @@ const theme = createMuiTheme({
     secondary: {
       main: "#152D35",
     },
+    info:{
+      main: '#D4ECDD',
+    }
   },
   typography: {
     fontFamily: "Poppins",
@@ -23,12 +30,34 @@ const theme = createMuiTheme({
   },
 });
 
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Typography color="primary" fontWeight="fontWeightBold" variant="h1">
-        Final Project 2
-      </Typography>
+      <Router>
+        <Suspense fallback={<div>loading...</div>}>
+          <Switch>
+            {
+              Routes.map((route) => {
+                const { component: Component, path, exact } = route;
+                return (
+                  <Route
+                    key={path}
+                    path={path}
+                    exact={exact}
+                    render={(props) => (
+                        <Layout>
+                          <Component {...props}/>
+                      </Layout>
+                    )}
+                  />
+                )
+              })
+            }
+          </Switch>
+        </Suspense>
+      </Router>
+      gfg
     </ThemeProvider>
   );
 };
