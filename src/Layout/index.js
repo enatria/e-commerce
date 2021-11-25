@@ -1,18 +1,18 @@
-import React from 'react'
-import { NavBar } from '../components/molecules';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { NavBar } from '../components/molecules';
 
-const Layout = ({children}) => {
-    return (
-        <div>
-            <NavBar />
-            {children}
-        </div>
-    )
-}
+const Layout = function ({ children }) {
+  return (
+    <div>
+      <NavBar />
+      {children}
+    </div>
+  );
+};
 
 Layout.propTypes = {
-    children : PropTypes.node
-}
+  children: PropTypes.node,
+};
 
-export default Layout
+export default Layout;

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { CardProduct } from '../../components/molecules';
 
-export default function Home(){
-    return (
-        <div>
-            Home
-        </div>
-    )
+export default function Home() {
+  return (
+    <div>
+      Home
+      <CardProduct/>
+    </div>
+  );
 }
