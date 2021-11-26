@@ -33,7 +33,7 @@ const theme = createTheme({
     },
     h5 : {
       fontSize: 23,
-      color:'#152D35',
+      color: '#152D35',
     },
     span : {
       fontSize: 15,
