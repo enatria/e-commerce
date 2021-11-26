@@ -17,22 +17,23 @@ const CardLogin = () => {
     const classes = useStyles()
     return (
         <Box sx={{
-            backgroundColor: 'primary.main',
+            backgroundColor: 'white',
             display: "flex",
             flexDirection: 'column',
             width: '40vw',
             padding:5,
             justifyContent: 'space-between',
-            borderRadius:3
+            alignItems:'center',
+            borderRadius:2
         }}>
             <Box style={{
                 translateX:'40%',
                 marginBottom:25
             }}>
-                <Typography variant="h5" color="info.main" fontWeight="fontWeightBold">Login here!</Typography>
+                <Typography variant="h5" color="primary.main" fontWeight="fontWeightBold">Login here!</Typography>
             </Box>
-            <TextField className={classes.root} id="outlined-basic" sx={{marginBottom:5}} color='info' label="Email" variant="outlined" />
-            <TextField id="outlined-basic" color="info" label="Password" type="password" variant="outlined" />
+            <TextField className={classes.root} id="outlined-basic" sx={{marginBottom:5, width:'100%'}} color='primary' label="Email" variant="outlined" />
+            <TextField id="outlined-basic" sx={{width:'100%'}} color="primary" label="Password" type="password" variant="outlined" />
         </Box>
     )
 }
