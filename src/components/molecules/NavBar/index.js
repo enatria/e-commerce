@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { makeStyles } from '@mui/styles';
-import { Link } from 'react-router-dom';
+import Link from '../../atoms/Link'
 import Brand from '../../atoms/Brand';
 
 const useStyles = makeStyles({
