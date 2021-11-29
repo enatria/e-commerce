@@ -13,7 +13,7 @@ const Login = () => {
                 flexDirection:'column',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginTop:5
+                marginTop:2
         }}>
             <Brand/>
             <CardLogin/>

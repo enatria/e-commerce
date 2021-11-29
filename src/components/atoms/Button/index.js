@@ -13,7 +13,7 @@ function Button(props) {
     if (props.blank && props.link) {
         return (
             <a href={props.link} target="_blank" rel="noreferrer">
-            <MuiButton variant={props.variant} color="primary" onClick={props.onClick}>
+            <MuiButton  sx={{textTransform:'none', fontSize:14, fontWeight:600, width:'100%'}} variant={props.variant} color="primary" onClick={props.onClick} size={props.size}>
                 {props.children}
             </MuiButton>
             </a>
@@ -23,7 +23,7 @@ function Button(props) {
             <RouteLink 
             style={{textDecoration: 'none'}} 
             to={props.href} target={props.blank ? '_blank' : ''} >
-                <MuiButton variant={props.variant} color="primary" onClick={props.onClick}>
+                <MuiButton sx={{textTransform:'none', fontSize:14, fontWeight:600, width:'100%'}} variant={props.variant} color="primary" onClick={props.onClick} size={props.size}>
                     {props.children}
                 </MuiButton>
             </RouteLink>
@@ -33,12 +33,14 @@ function Button(props) {
 
 Button.defaultProps = {
     variant: buttonVariant.DEFAULT,
+    size: 'small',
     href: '/'
 };
 
 Button.propTypes = {
     href: PropTypes.string,
     variant: PropTypes.string,
+    size: PropTypes.string,
     onClick: PropTypes.func
 };
 

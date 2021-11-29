@@ -14,15 +14,15 @@ import Brand from '../../atoms/Brand';
 
 const useStyles = makeStyles({
   root: {
-    boxShadow: 'none !important',
+    
   },
 });
 
 export default function Navbar() {
   const classes = useStyles();
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className={classes.root} color="info">
+    <Box sx={{ flexGrow: 1 }} className={classes.root}>
+      <AppBar position="static" sx={{ boxShadow: 'none !important',}}  color="info">
         <Container>
           <Box
             sx={{
