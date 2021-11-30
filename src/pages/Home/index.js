@@ -1,11 +1,11 @@
 import React from 'react';
-import { CardProduct } from '../../components/molecules';
+import ListProducts from '../../components/organisms/ListProducts';
 
 export default function Home() {
   return (
     <div>
       Home
-      <CardProduct/>
+      <ListProducts/>
     </div>
   );
 }

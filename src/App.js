@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import './App.css';
 import { Routes } from './routes';
 
 const Layout = React.lazy(() => import('./Layout'));
@@ -32,7 +32,7 @@ const theme = createTheme({
       color:'#112031',
     },
     h5 : {
-      fontSize: 23,
+      fontSize: 19,
       color: '#152D35',
     },
     span : {
