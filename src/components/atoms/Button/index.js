@@ -1,5 +1,3 @@
-import React from 'react'
-// import { color } from '../_global-conf'
 import { Link as RouteLink } from 'react-router-dom'
 import MuiButton from '@mui/material/Button'
 import PropTypes from 'prop-types'

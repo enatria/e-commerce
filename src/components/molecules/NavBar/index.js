@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { makeStyles } from '@mui/styles';
+import Button from '../../atoms/Button';
 import Link from '../../atoms/Link'
 import Brand from '../../atoms/Brand';
 
@@ -27,32 +28,33 @@ export default function Navbar() {
           <Box
             sx={{
               display: 'flex',
-              justifyContent: 'space-between',
+              justifyContent:'space-between',
               flexDirection: 'row',
               alignItems: 'center',
             }}
           >
-            <Brand />
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <Box sx={{
-                marginRight: '20px',
-              }}
-              >
+            <Box sx={{
+              display: 'flex',
+              justifyContent:'start',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+              <Brand />
+              <Box sx={{marginLeft:7}}>
                 <Link>Home</Link>
               </Box>
-              <Box>
-                <Link>Login</Link>
-              </Box>
             </Box>
-            <IconButton>
-              <ShoppingCartIcon color="primary" />
-            </IconButton>
+            <Box sx={{
+              display: 'flex',
+              justifyContent:'space-between',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>  
+              <IconButton>
+                    <ShoppingCartIcon color="primary" />
+              </IconButton>
+              <Button>Login</Button>
+            </Box>
           </Box>
         </Container>
       </AppBar>
