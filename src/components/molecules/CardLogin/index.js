@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles';
 import { Button } from '../../atoms';
 import { isAuthenticated, authenticate  } from '../../../config/authService';
 import { setTokens } from '../../../config/tokenCreator';
-import { start, success, error } from '../../../redux/authenticationSlice';
+import { pending, success, error } from '../../../redux/authenticationSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -83,7 +83,7 @@ const CardLogin = () => {
                 <TextField size="small" className={classes.root} id="outlined-basic" sx={{ marginBottom: 2, width: '100%' }} color='primary' label="Email" variant="outlined" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                 <TextField size="small" id="outlined-basic" sx={{ width: '100%' }} color="primary" label="Password" type="password" variant="outlined" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 <Box  sx={{marginTop:3, width:'100%'}}>
-                    <button type="submit">Login</button>
+                    <Button type="submit">Login</Button>
                 </Box>
                 </form>
         </Box>

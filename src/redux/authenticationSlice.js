@@ -28,5 +28,5 @@ const authenticationSlice = createSlice({
 
 
 
-  export const { start, success, error } = authenticationSlice.actions;
+  export const { pending, success, error } = authenticationSlice.actions;
   export const authenticationReducer = authenticationSlice.reducer;
