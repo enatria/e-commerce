@@ -4,8 +4,9 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { makeStyles } from '@mui/styles';
 import { Button } from '../../atoms';
-import { isAuthenticated } from '../../../config/authService';
-import { authenticateUser } from '../../../redux/authenticationSlice';
+import { isAuthenticated, authenticate  } from '../../../config/authService';
+import { setTokens } from '../../../config/tokenCreator';
+import { start, success, error } from '../../../redux/authenticationSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -17,6 +18,8 @@ const useStyles = makeStyles({
         color:'#fff'
     }
 });
+
+
   
 const CardLogin = () => {
     
@@ -25,19 +28,38 @@ const CardLogin = () => {
     const history = useHistory()
     const dispatch = useDispatch();
 
+    
+
     if (isAuthenticated()) {
         history.push('/')
     }
 
     const classes = useStyles()
 
-    const data = {email : email, password : password};
+    const userData = { email: email, password: password };
+        
 
-    function handleSubmit(e){
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(data);
-        dispatch(authenticateUser(data))
-        history.push('/')
+            if(!email || !password){
+                return alert("fill up all the form!");
+        }
+        
+        try {
+            const authData = await authenticate(
+             userData
+            );
+                if (authData.status === true) {
+                setTokens(authData.data);
+                    dispatch(success(authData));
+                    history.push('/')
+                } else {
+                    dispatch(error(authData))
+                    alert(authData.data)
+                }
+        } catch (err) {
+            dispatch(error("Something went wrong"));
+        }
     }
 
     return (

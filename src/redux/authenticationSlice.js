@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { authenticate } from '../config/authService';
-import { setTokens } from '../config/tokenCreator';
 
 const initialState = {
-    isProcessingRequest: false,
-    accessToken : "",
+  user: {},
+  isLoading: false,
+  error:"",
 }
 
 
@@ -12,45 +11,22 @@ const authenticationSlice = createSlice({
     name:"authentication",
     initialState,
     reducers: {
-        start: (state) => {
-            return {
-              ...state,
-              isProcessingRequest: true,
-            };
+          pending: (state) => {
+              state.isLoading = true;
           },
           success: (state, action) => {
-            return {
-              ...state,
-              isProcessingRequest: false,
-            };
+            state.user = action.payload;
+            state.isLoading = true;
+            state.error = "";
           },
           error: (state, action) => {
-            return {
-              ...state,
-              isProcessingRequest: false,
-            };
+            state.isLoading = false;
+            state.error = action.payload;
           },
         }
 })
 
-export const authenticateUser = (userData) => async (dispatch) => {
-
-    try {
-      const authData = await authenticate(
-       userData
-      );
-      if (userData.status === true) {
-        setTokens(authData.data);
-        dispatch(success(authData));
-      } else {
-        dispatch(error());
-      }
-    } catch (err) {
-      dispatch(error(err));
-    }
-  };
 
 
   export const { start, success, error } = authenticationSlice.actions;
-  export const selectAuthentication = (state) => state.authentication;
   export const authenticationReducer = authenticationSlice.reducer;
